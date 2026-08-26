@@ -1,0 +1,24 @@
+# 基础设施灾损视觉评估 - 依赖清单
+# 安装: pip install -r requirements.txt
+
+# ----- 基础依赖 -----
+numpy>=1.21.0
+opencv-python>=4.5.0
+opencv-contrib-python>=4.5.0
+
+# ----- YOLO 检测 -----
+ultralytics>=8.0.0
+
+# ----- OCR（水位识别用） -----
+# PaddleOCR 方案（推荐，中文识别效果好）
+paddleocr>=2.7.0
+# 备用方案: easyocr
+# easyocr>=1.7.0
+
+# ----- 图像处理 -----
+ Pillow>=9.0.0
+ matplotlib>=3.5.0
+
+# ----- 训练工具 -----
+tqdm>=4.60.0
+pyyaml>=6.0
