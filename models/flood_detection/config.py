@@ -1,6 +1,10 @@
 """
 洪水/低洼积水分割模型配置
 
+⚠️ 重要提示：路径导入必须用 from infra_path_config import ...
+   禁止改回 from path_config import ...
+   （与 v2 的 path_config.py 模块名冲突，会导致 ImportError）
+
 主模型：v2 项目 RescueNet 训练的洪水分割模型（flood_rescuenet.pt，mAP50 0.834）
 备用数据：FloodIMG（仅 25 张标注，10 类通用物体，无 Flood 类）
           RescueNet（无人机洪水分割，2941 对，CC BY-NC-ND）
@@ -12,7 +16,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from path_config import (
+from infra_path_config import (
     MODELS_DIR, FLOODIMG_DIR, RESCUENET_DIR,
     INFRA_FLOOD_DIR, FLOOD_MODEL_WEIGHT,
 )

@@ -1,6 +1,11 @@
 """
 路径配置模块（基础设施灾损识别项目）
 ====================================
+⚠️ 重要提示：三个 models/*/config.py 的路径导入必须用
+   from infra_path_config import ...
+   禁止改回 from path_config import ...
+   （与 v2 的 path_config.py 模块名冲突，会导致 ImportError）
+
 统一管理所有数据/权重路径，实现路径可移植化。
 
 优先级（三级回退）：

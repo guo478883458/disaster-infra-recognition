@@ -1,6 +1,10 @@
 """
 河道水位识别模型配置
 
+⚠️ 重要提示：路径导入必须用 from infra_path_config import ...
+   禁止改回 from path_config import ...
+   （与 v2 的 path_config.py 模块名冲突，会导致 ImportError）
+
 数据源：SAM_water_level_Dataset（中文水位尺场景，3315 张图像）
   - 图像: Staff gauge images/<YYYYMMDD>/images/<Image_name>.jpg
   - 真值: In-situ water levels/In-situ & simulated water levels.xlsx
@@ -16,7 +20,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from path_config import (
+from infra_path_config import (
     WATER_LEVEL_DATA_DIR, WATER_LEVEL_IMAGES_DIR, WATER_LEVEL_XLSX,
     INFRA_WATER_LEVEL_DIR, WATER_LEVEL_DIGIT_PT,
 )

@@ -1,6 +1,10 @@
 """
 道路/桥梁损毁检测模型配置
 
+⚠️ 重要提示：路径导入必须用 from infra_path_config import ...
+   禁止改回 from path_config import ...
+   （与 v2 的 path_config.py 模块名冲突，会导致 ImportError）
+
 数据源：RDD2020（三国道路损毁数据集）
   - train/: Czech(2829) + India(7706) + Japan(10506) = 21041 张
   - test1/: Czech(349) + India(969) + Japan(1313) = 2631 张
@@ -11,7 +15,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from path_config import RDD2020_DIR, INFRA_ROAD_BRIDGE_DIR, ROAD_BRIDGE_PT
+from infra_path_config import RDD2020_DIR, INFRA_ROAD_BRIDGE_DIR, ROAD_BRIDGE_PT
 
 DATA_DIR = RDD2020_DIR
 MODEL_WEIGHTS_DIR = INFRA_ROAD_BRIDGE_DIR
