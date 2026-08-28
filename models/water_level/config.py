@@ -14,18 +14,18 @@
   水位公式: L1 - (10 - L2 * 0.1) - 0.25 * L3
 """
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from path_config import (
+    WATER_LEVEL_DATA_DIR, WATER_LEVEL_IMAGES_DIR, WATER_LEVEL_XLSX,
+    INFRA_WATER_LEVEL_DIR, WATER_LEVEL_DIGIT_PT,
+)
 
-# 数据集根目录（只读引用 H 盘）
-DATA_DIR = r"H:\dev\disaster-data\infra_datasets\water_level\extracted\SAM_water_level_Dataset"
-IMAGES_DIR = os.path.join(DATA_DIR, "Staff gauge images")
-XLSX_PATH = os.path.join(DATA_DIR, "In-situ water levels",
-                         "In-situ & simulated water levels.xlsx")
-
-# 权重保存路径（不进 git）
-MODEL_WEIGHTS_DIR = r"H:\dev\disaster-data\models\infra\water_level"
-
-# 预训练权重路径
-PRETRAINED_WEIGHTS = os.path.join(MODEL_WEIGHTS_DIR, "water_level_digit_detector.pt")
+DATA_DIR = WATER_LEVEL_DATA_DIR
+IMAGES_DIR = WATER_LEVEL_IMAGES_DIR
+XLSX_PATH = WATER_LEVEL_XLSX
+MODEL_WEIGHTS_DIR = INFRA_WATER_LEVEL_DIR
+PRETRAINED_WEIGHTS = WATER_LEVEL_DIGIT_PT
 
 # 推理参数
 CONFIDENCE_THRESHOLD = 0.5

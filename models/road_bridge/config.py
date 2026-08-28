@@ -9,12 +9,13 @@
   - 类别: D00 纵向裂缝, D10 横向裂缝, D20 龟裂, D40 坑洼
 """
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from path_config import RDD2020_DIR, INFRA_ROAD_BRIDGE_DIR, ROAD_BRIDGE_PT
 
-# 数据集根目录
-DATA_DIR = r"H:\dev\disaster-data\infra_datasets\rdd2020"
-
-# 权重保存路径（不进 git）
-MODEL_WEIGHTS_DIR = r"H:\dev\disaster-data\models\infra\road_bridge"
+DATA_DIR = RDD2020_DIR
+MODEL_WEIGHTS_DIR = INFRA_ROAD_BRIDGE_DIR
+FINETUNED_WEIGHTS = ROAD_BRIDGE_PT
 
 # RDD2020 类别映射（4 类，与 RDD2022 一致）
 RDD2020_CLASSES = {
@@ -34,9 +35,6 @@ RDD2020_NAME_TO_ID = {v: k for k, v in RDD2020_CLASSES.items()}
 
 # YOLO 格式标签输出目录（在数据目录下创建，只读数据不修改，写 YOLO 标签到此处）
 YOLO_LABELS_DIR = os.path.join(DATA_DIR, "yolo_labels")
-
-# 微调后的权重路径
-FINETUNED_WEIGHTS = os.path.join(MODEL_WEIGHTS_DIR, "rdd2020_yolov8n.pt")
 
 # 推理参数
 CONFIDENCE_THRESHOLD = 0.25

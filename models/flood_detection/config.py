@@ -1,7 +1,7 @@
 """
 洪水/低洼积水分割模型配置
 
-主模型：v2 项目 FloodNet 训练的洪水分割模型（flood.pt）
+主模型：v2 项目 RescueNet 训练的洪水分割模型（flood_rescuenet.pt，mAP50 0.834）
 备用数据：FloodIMG（仅 25 张标注，10 类通用物体，无 Flood 类）
           RescueNet（无人机洪水分割，2941 对，CC BY-NC-ND）
           STURM-Flood（遥感洪水，S1 完整 S2 不完整，本次不训练）
@@ -10,9 +10,15 @@
   - RescueNet: CC BY-NC-ND（非商用，训练前需确认用途）
 """
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from path_config import (
+    MODELS_DIR, FLOODIMG_DIR, RESCUENET_DIR,
+    INFRA_FLOOD_DIR, FLOOD_MODEL_WEIGHT,
+)
 
 # ==================== 分割模型权重 ====================
-FLOOD_MODEL_WEIGHT = r"H:\dev\disaster-data\models\flood.pt"
+FLOOD_MODEL_WEIGHT = FLOOD_MODEL_WEIGHT
 
 # ==================== 面积换算常量 ====================
 PIXEL_RESOLUTION_M = 0.05
@@ -27,13 +33,13 @@ DISASTER_LEVELS = [
     (5000, float("inf"), "严重"),
 ]
 
-# ==================== 旧数据目录（仅用于参考） ====================
-DATA_DIR = r"H:\dev\disaster-data\image_datasets\floodimg"
+# ==================== 数据目录 ====================
+DATA_DIR = FLOODIMG_DIR
 IMAGES_DIR = os.path.join(DATA_DIR, "Flood Images")
 YOLO_LABELS_DIR = os.path.join(DATA_DIR, "yolo_labels")
-RESCUE_DIR = r"H:\dev\disaster-data\image_datasets\rescuenet\segmentation-trainset"
-RESCUE_YOLO_LABELS_DIR = r"H:\dev\disaster-data\image_datasets\rescuenet\yolo_seg_labels"
-MODEL_WEIGHTS_DIR = r"H:\dev\disaster-data\models\infra\flood_detection"
+RESCUE_DIR = RESCUENET_DIR
+RESCUE_YOLO_LABELS_DIR = os.path.join(RESCUE_DIR, "yolo_seg_labels")
+MODEL_WEIGHTS_DIR = INFRA_FLOOD_DIR
 
 # ==================== 备用检测类别（FloodIMG 10 类） ====================
 FLOOD_CLASSES = {
